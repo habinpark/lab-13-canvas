@@ -1,0 +1,3 @@
+Animated Javascript Artwork:
+
+    For my animation I will make a spirogragh made up of many rotating elipses. This will make some crazy patterns and will consist of 121 elipses rotating at varying speeds. For my click event I will make it so that the artwork will spin faster evertime someone clicks it.
