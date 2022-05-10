@@ -23,11 +23,11 @@
         var circle = { 'x': 0, "y": 100, "r": 25 }; //holds x y and radius values for our circle
         var dx = 2; //movement speed
         var fps = 10; //refresh rate
-        const pi = math.PI;
+        const pi = Math.PI;
 
         function main() {
-            var sketch = document.getElementById("sketch");
-            var context = sketch.getContext("2d");
+            sketch = document.getElementById("sketch");
+            context = sketch.getContext("2d");
             circle = { "x": 25, "y": sketch.offsetHeight / 2, "r": 25 };
             setInterval(animate, fps);
         }
