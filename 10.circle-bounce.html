@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Bounce</title>
+    <style>
+        #sketch {
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="sketch" width="600" height="600"></canvas>
+    <script>
+        document.addEventListener("DOMContentLoaded", main);
+
+        var sketch;
+        var context;
+        var circle = { 'x': 0, "y": 100, "r": 25 }; //holds x y and radius values for our circle
+        var dy = 2; //movement speed
+        var fps = 10; //refresh rate
+        var accel = .9;
+        const pi = Math.PI;
+
+        function main() {
+            sketch = document.getElementById("sketch");
+            context = sketch.getContext("2d");
+            circle = { "x": 300, "y": 50, "r": 25 };
+            setInterval(animate, fps);
+        }
+
+        function animate() {
+            context.clearRect(0, 0, sketch.offsetWidth, sketch.offsetHeight);
+            draw_circle(circle.x, circle.y, circle.r);
+            dy += 1;
+            circle.y += dy;
+
+            if (circle.y > sketch.offsetHeight - dy - circle.r) {
+                dy *= -accel;
+                //used teleportation to make sure that the circle does not escape the boundary box
+                circle.y = 575;
+            } else if (circle.y < circle.r - dy) {
+                dy *= -accel;
+                //used teleportation to make sure that the circle does not escape the boundary box
+                circle.y = 25;
+            }
+
+
+        }
+
+        function draw_circle(x, y, r) {
+            context.beginPath();
+            context.arc(x, y, r, 0, 2 * pi, true);
+            // context.arc(x, y, radius, start angle, end angle, clockwise);
+            context.closePath();
+            context.fill();
+        }
+    </script>
+
+</body>
+
+</html>
